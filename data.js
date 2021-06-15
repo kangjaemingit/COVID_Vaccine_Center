@@ -31,6 +31,7 @@ function search_item(){
 
 }
 
+// 지도 기본 셋팅
 let map;
 function initMap() {
     var seoul = { lat: 37.5642135 ,lng: 127.0016985 };
@@ -42,10 +43,8 @@ function initMap() {
 
 }
 
+// 지도 위치변경
 function changeCenter(latitude, longitude){
-    // var latitude = parseFloat($('#latitude').val());
-    // var longitude = parseFloat($('#longitude').val());
-
     var location = {lat : latitude, lng : longitude};
     map.panTo(location);
     map.setZoom(15);
@@ -71,10 +70,8 @@ function detail(center_name){
                     + "<li><h3>전화번호</h3><p>" + this.phoneNumber + "</p></li>"
                     + "<form><input type = 'hidden' name = 'bm_facilityname' id = 'bm_facilityname' value = '" + this.facilityName + "'/>"
                     + "<input type = 'hidden' name = 'bm_address' id = 'bm_address' value = '" + this.address + "'/>"
-                    + "<input type = 'hidden' name = 'bm_phone' id = 'bm_phone' value = '" + this.phoneNumber + "'/>"
-                    + "<input type = 'hidden' name = 'latitude' id = 'latitude' value = '" + this.lat + "'/>"
-                    + "<input type = 'hidden' name = 'longitude' id = 'longitude' value = '" + this.lng + "'/></form>";
-
+                    + "<input type = 'hidden' name = 'bm_phone' id = 'bm_phone' value = '" + this.phoneNumber + "'/></form>"
+                    
                     changeCenter(parseFloat(this.lat), parseFloat(this.lng));
                 }
             });
