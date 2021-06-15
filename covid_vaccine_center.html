@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>코로나 백신 센터</title>
+    <script src = "data.js"></script>
+    <script>
+        $(document).ready(function(){
+            openDB();
+            createTable();
+        });
+    </script>
+
+
+</head>
+<body>
+    
+    <div data-theme = "b">
+        <!--메인 홈페이지--> 
+        <div data-role = "page" id = "page1">
+            <div data-role = "header" data-theme = "b">
+                <h1>코로나19 예방접종센터 조회</h1>
+                <div data-role = "navbar">
+                    <ul>
+                        <li><a href = "#page1" class = "ui-btn-active">백신센터</a></li>
+                        <li><a href = "#bookmark" onclick = "select_bookmark()">즐겨찾기</a></li>
+                    </ul>
+                </div>
+            </div>             
+            
+            
+            <div data-role = "content">
+                <div class = "ui-grid-a">
+                    <div class = "ui-block-a">
+                        <input type = "search" name = "keyword" id = "keyword" placeholder="지역을 입력하세요" onkeyup ='search_item()'/>
+                    </div>
+                    <div class = "ui-block-b">
+                        <button name = "btn" id = "btn" data-inline = "true">검색</button>
+                    </div>
+                </div>                
+                
+                <ul data-role = "listview" name = "listArea" id = "listArea" data-inset = "true">
+                    <li id = "item">데이터 로드전</li>
+                </ul>
+            </div>
+            
+
+            <div data-role = "footer" data-position = "fixed" data-theme = "b">
+                <h1>스마트IT전공 강재민</h1>
+            </div>
+        </div>
+
+
+        <!-- 세부내용 -->
+        <div data-role = "page" id = "detail">
+            <div data-role = "header" data-theme = "b">
+                <h1>코로나19 예방접종센터 조회</h1>
+                <div data-role = "navbar">
+                    <ul>
+                        <li><a href = "#page1" class = "ui-btn-active">백신센터</a></li>
+                        <li><a href = "#bookmark" onclick = "select_bookmark()">즐겨찾기</a></li>
+                    </ul>
+                </div>
+            </div>             
+            
+            
+            <div data-role = "content">
+                <div id = "map" style="width:100%; height: 30vh;"></div>
+
+                <ul data-role = "listview" name = "detailArea" id = "detailArea" data-inset = "true">
+                    <li id = "item">데이터 로드전</li>
+                </ul>
+                <button type = "button" name = "btn_bookmark" id = "btn_bookmark" data-inline = "true" onclick = 'insert_bookmark()'>즐겨찾기 추가</button>
+
+                <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCJvgzNFeUUXGeQayZ70A5OFUizFicfQo&callback=initMap&libraries=&v=weekly"
+                ></script>
+
+            </div>
+
+            <div data-role = "footer" data-position = "fixed" data-theme = "b">
+                <h1>스마트IT전공 강재민</h1>
+            </div>
+        </div>
+
+        
+        <!-- 즐겨찾기 -->
+        <div data-role = "page" id = "bookmark">
+            <div data-role = "header" data-theme = "b">
+                <h1>코로나19 예방접종센터 조회</h1>
+                <div data-role = "navbar">
+                    <ul>
+                        <li><a href = "#page1" class = "ui-btn-active">백신센터</a></li>
+                        <li><a href = "#bookmark" onclick = "select_bookmark()">즐겨찾기</a></li>
+                    </ul>
+                </div>
+            </div>             
+            
+            
+            <div data-role = "content">
+                <ul data-role = "listview" name = "bookmarkArea" id = "bookmarkArea" data-inset = "true">
+                    <li id = "item">데이터 로드전</li>
+                </ul>
+                <button type = "button" name = "del_bookmark" id = "del_bookmark" data-inline = "true" onclick = 'delete_bookmark()'>즐겨찾기 전체 삭제</button>
+                
+            </div>
+            
+
+            <div data-role = "footer" data-position = "fixed" data-theme = "b">
+                <h1>스마트IT전공 강재민</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
